@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+	<!-- include resource="org/springframework/boot/logging/logback/base.xml"/ -->
+	
+	<appender name="MAINLOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<File>C:/logs/bigdata.log</File>
+		<encoder>
+			<pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n
+			</pattern>
+		</encoder>
+		<rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+			<maxIndex>10</maxIndex>
+			<FileNamePattern>C:/logs/bigdata.log.%i
+			</FileNamePattern>
+		</rollingPolicy>
+		<triggeringPolicy
+			class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+			<MaxFileSize>10MB</MaxFileSize>
+		</triggeringPolicy>
+	</appender>
+	
+	<appender name="ERRORLOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<File>C:/logs/bigdata-errors.log</File>
+		<encoder>
+			<pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n
+			</pattern>
+		</encoder>
+		<rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+			<maxIndex>10</maxIndex>
+			<FileNamePattern>C:/logs/bigdata-errors.log.%i
+			</FileNamePattern>
+		</rollingPolicy>
+		<triggeringPolicy
+			class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+			<MaxFileSize>10MB</MaxFileSize>
+		</triggeringPolicy>
+	</appender>
+	
+	<logger name="sun.rmi" level="INFO" additivity="false">
+		<appender-ref ref="MAINLOG" />
+	</logger>
+	<logger name="org.interview" level="INFO" additivity="false">
+		<appender-ref ref="MAINLOG" />
+	</logger>
+	<logger name="org.springframework" level="INFO" additivity="false">
+		<appender-ref ref="MAINLOG" />
+	</logger>
+	
+	<root level="INFO" additivity="false">
+		<appender-ref ref="MAINLOG" />
+	</root>
+</configuration>

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <artifactId>bigdata-application</artifactId>
+    <groupId>it.longo.bigdata</groupId>
+    <version>0.0.1-SNAPSHOT</version>
+  </parent>
+
+  <artifactId>bigdata-application-webapp</artifactId>
+  <name>bigdata-application-webapp</name>
+  <packaging>war</packaging>
+  <url></url>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
+  </properties>
+
+<build>
+    <resources>
+		<resource>
+			<directory>src/main/resources</directory>
+			<filtering>true</filtering>
+		</resource>
+		<resource>
+			<directory>${config.for.profile}</directory>
+			<filtering>true</filtering>
+		</resource> 
+	</resources>
+    
+	<plugins>
+		<plugin>
+        	<groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-maven-plugin</artifactId>
+            <configuration>
+            	<!-->finalName></finalName-->
+		        <layout>WAR</layout>
+		        <addResources>true</addResources>
+		   	</configuration>
+		    <executions>
+		    	<execution>
+		          <goals>
+		            <goal>repackage</goal>
+		          </goals>
+		 		</execution>
+	      </executions>
+    	</plugin>
+	</plugins>
+  </build>
+  
+  	<profiles>
+		<profile>
+			<id>dev</id>
+			<properties>
+				<config.for.profile>src/main/config/dev</config.for.profile>
+			</properties>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+		</profile>
+		<profile>
+			<id>stag</id>
+			<properties>
+				<config.for.profile>src/main/config/stag</config.for.profile>
+			</properties>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+		</profile>
+		<profile>
+			<id>prod</id>
+			<properties>
+				<config.for.profile>src/main/config/prod</config.for.profile>
+			</properties>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+			<!-- some <build> configuration -->
+		</profile>
+	</profiles>
+
+  <dependencies>
+  	<dependency>
+	    <groupId>org.springframework.boot</groupId>
+	    <artifactId>spring-boot-starter-web</artifactId>
+	</dependency>
+  	<dependency>
+  		<groupId>it.longo.bigdata</groupId>
+  		<artifactId>bigdata-application-commons</artifactId>
+  		<version>0.0.1-SNAPSHOT</version>
+  	</dependency>
+  </dependencies>
+  
+</project>

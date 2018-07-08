@@ -1,0 +1,9 @@
+{
+  "directory": "src/main/webapp/assets/vendor",
+  "timeout": 180000,
+  "registry": {
+    "search": [
+      "https://registry.bower.io"
+    ]
+  }
+}

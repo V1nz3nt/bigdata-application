@@ -1,0 +1,23 @@
+{
+  "name": "bigdata-application-webapp",
+  "authors": [
+    "Vincenzo Longo <vincenzolongo@finconsgroup.com>"
+  ],
+  "description": "bigdata mongodb spring-boot",
+  "main": "",
+  "license": "MIT",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^4.1.1",
+    "datatables.net" : "^1.10.16",
+    "datatables.net-bs4": "^1.10.16"
+  }
+}
